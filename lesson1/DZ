@@ -1,0 +1,18 @@
+import requests
+from pprint import pprint
+import json
+
+user = 'templl'
+url = f"https://api.github.com/users/{user}/repo"
+param = {'type': 'all'}
+response = requests.get(url, params = param)
+
+j_data = response.json()
+
+repositories = []
+
+for n in range(len(j_data)):
+    repositories.append(j_data[n]['name'])
+
+print(f"Репозитории пользователя {user}: {repositories})
+
